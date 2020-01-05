@@ -1,0 +1,29 @@
+<div class="container" *ngIf="categories && categories.length > 0">
+  <div class="row">
+    <h2>Equipment Catalog</h2>
+    <div  *ngFor="let category of categories" class="col-md-3 col-sm-4">
+      <mat-card class="height-300 mb-20 cursor-pointer" (click)="showSubCategories(category)">
+        <img class="category-image" src="assets/category/{{category.image}}"
+             onError="this.src='assets/no_img.png';">
+        <mat-card-footer class="category-footer">{{category.name}}</mat-card-footer>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+<div class="container" *ngIf="subCategories && subCategories.length > 0">
+  <div class="row">
+    <h2><span class="cursor-pointer" (click)="goToPreviousScreen()">Equipment Catalog</span>/{{selectedCategory}}</h2>
+    <div class="col-md-3 col-sm-4" *ngFor="let subCategory of subCategories">
+      <mat-card class="height-300 mb-20">
+        <img class="category-image" src="assets/category/subcategory/{{subCategory.image}}"
+             onError="this.src='assets/no_img.png';">
+        <mat-card-footer class="category-footer">{{subCategory.name}}</mat-card-footer>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showWelcomeScreen">
+  <div class="home-screen-text-container">Welcome to Rental Management System</div>
+</div>
